@@ -1,2 +1,20 @@
-<h2>Esta es la pantalla 1</h2>
+<h1>Usuarios</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Correo institucional</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="mostrar">
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.edad}}</td>
+        <td>{{usuario.correoInstitucional}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="pruebBooleana(true)">Mostrar</button>
+  <button class="btn btn-danger" (click)="pruebBooleana(false)">Ocultar</button>
 <router-outlet></router-outlet>
