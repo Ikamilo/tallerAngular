@@ -1,8 +1,52 @@
-<h2>Esta es la pantalla 2</h2>
-<div class="card" style="width: 18rem;">
-    <img src="../../../assets/img/angular.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Camilo Triana</h5>
-        <p class="card-text">Esto es una carta de ejemplo</p>
+<h1>Usuarios</h1>
+
+<div style="float: left; min-width: 40%; margin-left: 5%;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Correo institucional</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>usuario.nombre</td>
+        <td>usuario.edad</td>
+        <td>usuario.correoInstitucional</td>
+        <td><div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">Editar</button>
+            <button type="button" class="btn btn-secondary">Borrar</button>
+          </div></td>
+      </tr>
+    </tbody>
+  </table>
+  <!--<button class="btn btn-primary" (click)="pruebBooleana(true)">Mostrar</button>
+  <button class="btn btn-danger" (click)="pruebBooleana(false)">Ocultar</button>-->
+</div>
+<div style="float: right; min-width: 40%; margin-right: 5%;">
+  <form>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Nombre:</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Camilo">
     </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Edad:</span>
+      </div>
+      <input type="text" class="form-control" placeholder="21">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Correo institucional:</span>
+      </div>
+      <input type="text" class="form-control" placeholder="camilo@correo.com">
+    </div><br>
+    <div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
 </div>

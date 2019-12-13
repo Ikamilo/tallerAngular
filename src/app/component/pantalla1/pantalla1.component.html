@@ -1,20 +1,56 @@
 <h1>Usuarios</h1>
-<table class="table">
+
+<div style="float: left; min-width: 40%; margin-left: 5%;">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Edad</th>
         <th scope="col">Correo institucional</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
-    <tbody *ngIf="mostrar">
-      <tr *ngFor="let usuario of usuarios">
-        <td>{{usuario.nombre}}</td>
-        <td>{{usuario.edad}}</td>
-        <td>{{usuario.correoInstitucional}}</td>
+    <tbody>
+      <tr>
+        <td>usuario.nombre</td>
+        <td>usuario.edad</td>
+        <td>usuario.correoInstitucional</td>
+        <td><div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-secondary">Editar</button>
+            <button type="button" class="btn btn-secondary">Borrar</button>
+          </div></td>
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-primary" (click)="pruebBooleana(true)">Mostrar</button>
-  <button class="btn btn-danger" (click)="pruebBooleana(false)">Ocultar</button>
-<router-outlet></router-outlet>
+  <!--<button class="btn btn-primary" (click)="pruebBooleana(true)">Mostrar</button>
+  <button class="btn btn-danger" (click)="pruebBooleana(false)">Ocultar</button>-->
+</div>
+<div style="float: right; min-width: 40%; margin-right: 5%;">
+    <form #formPantalla1="ngForm" (submit)="onSubmit(formPantalla1)">
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre:</span>
+          </div>
+          <input name="nombre" [(ngModel)]="nombre" type="text" class="form-control" placeholder="Camilo">
+        </div>
+    
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Edad:</span>
+          </div>
+          <input name="edad" [(ngModel)]="edad" type="text" class="form-control" placeholder="21">
+        </div>
+    
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo institucional:</span>
+          </div>
+          <input name="correoInstitucional" [(ngModel)]="correoInstitucional" type="text" class="form-control" placeholder="camilo@correo.com">
+        </div><br>
+    
+        <div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </form>
+</div>
