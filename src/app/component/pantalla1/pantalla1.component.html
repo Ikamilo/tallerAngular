@@ -1,23 +1,23 @@
-<h1>Usuarios</h1>
+<h1>Bibliotecas</h1>
 
 <div style="float: left; min-width: 40%; margin-left: 5%;">
   <table class="table">
     <thead>
       <tr>
         <th scope="col">Nombre</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Correo institucional</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Telefono</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>usuario.nombre</td>
-        <td>usuario.edad</td>
-        <td>usuario.correoInstitucional</td>
+      <tr *ngFor="let biblioteca of servicio.list">
+        <td>{{biblioteca.nombre}}</td>
+        <td>{{biblioteca.direccion}}</td>
+        <td>{{biblioteca.telefono}}</td>
         <td><div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-secondary">Editar</button>
-            <button type="button" class="btn btn-secondary">Borrar</button>
+            <button (click)="populateForm(biblioteca)" type="button" class="btn btn-secondary">Editar</button>
+            <button (click)="delete(biblioteca.bibliotecaId)" type="button" class="btn btn-secondary">Borrar</button>
           </div></td>
       </tr>
     </tbody>
@@ -26,27 +26,34 @@
   <button class="btn btn-danger" (click)="pruebBooleana(false)">Ocultar</button>-->
 </div>
 <div style="float: right; min-width: 40%; margin-right: 5%;">
-    <form #formPantalla1="ngForm" (submit)="onSubmit(formPantalla1)">
+    <form #formBiblioteca="ngForm" (submit)="onSubmit(formBiblioteca)">
 
+        <div class="input-group mb-3">
+          <!--<div class="input-group-prepend">
+            <span class="input-group-text">Id:</span>
+          </div>-->
+          <input name="bibliotecaId" [(ngModel)]="servicio.biblioteca.bibliotecaId" type="hidden" class="form-control" placeholder="Camilo">
+        </div>
+    
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Nombre:</span>
           </div>
-          <input name="nombre" [(ngModel)]="nombre" type="text" class="form-control" placeholder="Camilo">
+          <input name="nombre" [(ngModel)]="servicio.biblioteca.nombre" type="text" class="form-control">
         </div>
     
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Edad:</span>
+            <span class="input-group-text">Direccion:</span>
           </div>
-          <input name="edad" [(ngModel)]="edad" type="text" class="form-control" placeholder="21">
+          <input name="direccion" [(ngModel)]="servicio.biblioteca.direccion" type="text" class="form-control">
         </div>
-    
+
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text">Correo institucional:</span>
+            <span class="input-group-text">Telefono:</span>
           </div>
-          <input name="correoInstitucional" [(ngModel)]="correoInstitucional" type="text" class="form-control" placeholder="camilo@correo.com">
+          <input name="telefono" [(ngModel)]="servicio.biblioteca.telefono" type="text" class="form-control">
         </div><br>
     
         <div>

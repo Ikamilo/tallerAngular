@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { BibliotecaService } from "../../services/biblioteca.service";
+import { Biblioteca } from "../../models/biblioteca.model";
 
 @Component({
   selector: 'app-pantalla1',
@@ -8,16 +10,52 @@ import { NgForm } from "@angular/forms";
 })
 export class Pantalla1Component implements OnInit {
 
-  constructor() { }
+  constructor(private servicio: BibliotecaService) { }
 
   ngOnInit() {
+    this.resetForm();
+    this.servicio.getAll();
   }
 
-  nombre:string;
-  edad:number;
-  correoInstitucional:string;
+  onSubmit(form: NgForm) {
+    if (form.value.bibliotecaId == null) {
+      this.post(form);
+    } else {
+      this.put(form);
+    }
+  }
 
-  onSubmit(form:NgForm){
-    console.log(form.value);
+  populateForm(biblioteca: Biblioteca) {
+    this.servicio.biblioteca = biblioteca;
+  }
+
+  resetForm() {
+    this.servicio.biblioteca = {
+      bibliotecaId: null,
+      nombre: "",
+      direccion: "",
+      telefono: ""
+    }
+  }
+
+  post(form: NgForm) {
+    this.servicio.post(form.value).toPromise().then(res => {
+      this.resetForm();
+      this.servicio.getAll();
+    });
+  }
+
+  put(form: NgForm) {
+    this.servicio.put(form.value).toPromise().then(res => {
+      this.resetForm();
+      this.servicio.getAll();
+    });
+  }
+
+  delete(id: number) {
+    this.servicio.delete(id).toPromise().then(res => {
+      this.resetForm();
+      this.servicio.getAll();
+    });
   }
 }
